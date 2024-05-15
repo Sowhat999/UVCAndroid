@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 
 import com.serenegiant.uvccamera.R;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -161,7 +162,7 @@ public class FileUtils {
             final Process proc = runtime.exec("mount");
             final BufferedReader br = new BufferedReader(
                     new InputStreamReader(proc.getInputStream()));
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 //    			Log.i(TAG, "getExternalMounts:" + line);
                 if (line.contains("secure")) continue;
                 if (line.contains("asec")) continue;
