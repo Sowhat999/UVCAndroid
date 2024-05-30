@@ -802,39 +802,39 @@ final class TJBench {
 
       if (argv.length > minArg) {
         for (int i = minArg; i < argv.length; i++) {
-          if (argv[i].equalsIgnoreCase("-tile")) {
+          if ("-tile".equalsIgnoreCase(argv[i])) {
             doTile = true;  xformOpt |= TJTransform.OPT_CROP;
-          } else if (argv[i].equalsIgnoreCase("-fastupsample")) {
+          } else if ("-fastupsample".equalsIgnoreCase(argv[i])) {
             System.out.println("Using fast upsampling code\n");
             flags |= TJ.FLAG_FASTUPSAMPLE;
-          } else if (argv[i].equalsIgnoreCase("-fastdct")) {
+          } else if ("-fastdct".equalsIgnoreCase(argv[i])) {
             System.out.println("Using fastest DCT/IDCT algorithm\n");
             flags |= TJ.FLAG_FASTDCT;
-          } else if (argv[i].equalsIgnoreCase("-accuratedct")) {
+          } else if ("-accuratedct".equalsIgnoreCase(argv[i])) {
             System.out.println("Using most accurate DCT/IDCT algorithm\n");
             flags |= TJ.FLAG_ACCURATEDCT;
-          } else if (argv[i].equalsIgnoreCase("-progressive")) {
+          } else if ("-progressive".equalsIgnoreCase(argv[i])) {
             System.out.println("Using progressive entropy coding\n");
             flags |= TJ.FLAG_PROGRESSIVE;
-          } else if (argv[i].equalsIgnoreCase("-rgb"))
+          } else if ("-rgb".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_RGB;
-          else if (argv[i].equalsIgnoreCase("-rgbx"))
+          else if ("-rgbx".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_RGBX;
-          else if (argv[i].equalsIgnoreCase("-bgr"))
+          else if ("-bgr".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_BGR;
-          else if (argv[i].equalsIgnoreCase("-bgrx"))
+          else if ("-bgrx".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_BGRX;
-          else if (argv[i].equalsIgnoreCase("-xbgr"))
+          else if ("-xbgr".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_XBGR;
-          else if (argv[i].equalsIgnoreCase("-xrgb"))
+          else if ("-xrgb".equalsIgnoreCase(argv[i]))
             pf = TJ.PF_XRGB;
-          else if (argv[i].equalsIgnoreCase("-bottomup"))
+          else if ("-bottomup".equalsIgnoreCase(argv[i]))
             flags |= TJ.FLAG_BOTTOMUP;
-          else if (argv[i].equalsIgnoreCase("-quiet"))
+          else if ("-quiet".equalsIgnoreCase(argv[i]))
             quiet = 1;
-          else if (argv[i].equalsIgnoreCase("-qq"))
+          else if ("-qq".equalsIgnoreCase(argv[i]))
             quiet = 2;
-          else if (argv[i].equalsIgnoreCase("-scale") && i < argv.length - 1) {
+          else if ("-scale".equalsIgnoreCase(argv[i]) && i < argv.length - 1) {
             int temp1 = 0, temp2 = 0;
             boolean match = false, scanned = true;
             Scanner scanner = new Scanner(argv[++i]).useDelimiter("/");
@@ -858,27 +858,27 @@ final class TJBench {
               if (!match) usage();
             } else
               usage();
-          } else if (argv[i].equalsIgnoreCase("-hflip"))
+          } else if ("-hflip".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_HFLIP;
-          else if (argv[i].equalsIgnoreCase("-vflip"))
+          else if ("-vflip".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_VFLIP;
-          else if (argv[i].equalsIgnoreCase("-transpose"))
+          else if ("-transpose".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_TRANSPOSE;
-          else if (argv[i].equalsIgnoreCase("-transverse"))
+          else if ("-transverse".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_TRANSVERSE;
-          else if (argv[i].equalsIgnoreCase("-rot90"))
+          else if ("-rot90".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_ROT90;
-          else if (argv[i].equalsIgnoreCase("-rot180"))
+          else if ("-rot180".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_ROT180;
-          else if (argv[i].equalsIgnoreCase("-rot270"))
+          else if ("-rot270".equalsIgnoreCase(argv[i]))
             xformOp = TJTransform.OP_ROT270;
-          else if (argv[i].equalsIgnoreCase("-grayscale"))
+          else if ("-grayscale".equalsIgnoreCase(argv[i]))
             xformOpt |= TJTransform.OPT_GRAY;
-          else if (argv[i].equalsIgnoreCase("-nooutput"))
+          else if ("-nooutput".equalsIgnoreCase(argv[i]))
             xformOpt |= TJTransform.OPT_NOOUTPUT;
-          else if (argv[i].equalsIgnoreCase("-copynone"))
+          else if ("-copynone".equalsIgnoreCase(argv[i]))
             xformOpt |= TJTransform.OPT_COPYNONE;
-          else if (argv[i].equalsIgnoreCase("-benchtime") &&
+          else if ("-benchtime".equalsIgnoreCase(argv[i]) &&
                    i < argv.length - 1) {
             double temp = -1;
 
@@ -889,7 +889,7 @@ final class TJBench {
               benchTime = temp;
             else
               usage();
-          } else if (argv[i].equalsIgnoreCase("-warmup") &&
+          } else if ("-warmup".equalsIgnoreCase(argv[i]) &&
                      i < argv.length - 1) {
             double temp = -1;
 
@@ -901,10 +901,10 @@ final class TJBench {
               System.out.format("Warmup time = %.1f seconds\n\n", warmup);
             } else
               usage();
-          } else if (argv[i].equalsIgnoreCase("-yuv")) {
+          } else if ("-yuv".equalsIgnoreCase(argv[i])) {
             System.out.println("Testing YUV planar encoding/decoding\n");
             doYUV = true;
-          } else if (argv[i].equalsIgnoreCase("-yuvpad") &&
+          } else if ("-yuvpad".equalsIgnoreCase(argv[i]) &&
                      i < argv.length - 1) {
             int temp = 0;
 
@@ -913,28 +913,28 @@ final class TJBench {
             } catch (NumberFormatException e) {}
             if (temp >= 1)
               yuvPad = temp;
-          } else if (argv[i].equalsIgnoreCase("-subsamp") &&
+          } else if ("-subsamp".equalsIgnoreCase(argv[i]) &&
                      i < argv.length - 1) {
             i++;
             if (argv[i].toUpperCase().startsWith("G"))
               subsamp = TJ.SAMP_GRAY;
-            else if (argv[i].equals("444"))
+            else if ("444".equals(argv[i]))
               subsamp = TJ.SAMP_444;
-            else if (argv[i].equals("422"))
+            else if ("422".equals(argv[i]))
               subsamp = TJ.SAMP_422;
-            else if (argv[i].equals("440"))
+            else if ("440".equals(argv[i]))
               subsamp = TJ.SAMP_440;
-            else if (argv[i].equals("420"))
+            else if ("420".equals(argv[i]))
               subsamp = TJ.SAMP_420;
-            else if (argv[i].equals("411"))
+            else if ("411".equals(argv[i]))
               subsamp = TJ.SAMP_411;
-          } else if (argv[i].equalsIgnoreCase("-componly"))
+          } else if ("-componly".equalsIgnoreCase(argv[i]))
             compOnly = true;
-          else if (argv[i].equalsIgnoreCase("-nowrite"))
+          else if ("-nowrite".equalsIgnoreCase(argv[i]))
             write = false;
-          else if (argv[i].equalsIgnoreCase("-limitscans"))
+          else if ("-limitscans".equalsIgnoreCase(argv[i]))
             flags |= TJ.FLAG_LIMITSCANS;
-          else if (argv[i].equalsIgnoreCase("-stoponwarning"))
+          else if ("-stoponwarning".equalsIgnoreCase(argv[i]))
             flags |= TJ.FLAG_STOPONWARNING;
           else usage();
         }

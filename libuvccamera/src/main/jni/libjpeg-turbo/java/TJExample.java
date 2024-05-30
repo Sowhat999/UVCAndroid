@@ -166,7 +166,7 @@ class TJExample implements TJCustomFilter {
       if (argv.length < 2)
         usage();
 
-      if (argv[1].substring(0, 2).equalsIgnoreCase("-d"))
+      if ("-d".equalsIgnoreCase(argv[1].substring(0, 2)))
         display = true;
 
       /* Parse arguments. */
@@ -174,7 +174,7 @@ class TJExample implements TJCustomFilter {
         if (argv[i].length() < 2)
           continue;
         else if (argv[i].length() > 2 &&
-                 argv[i].substring(0, 3).equalsIgnoreCase("-sc") &&
+                 "-sc".equalsIgnoreCase(argv[i].substring(0, 3)) &&
                  i < argv.length - 1) {
           int match = 0;
           String[] scaleArg = argv[++i].split("/");
@@ -193,44 +193,44 @@ class TJExample implements TJCustomFilter {
           if (match != 1)
             usage();
         } else if (argv[i].length() > 2 &&
-                   argv[i].substring(0, 3).equalsIgnoreCase("-su") &&
+                   "-su".equalsIgnoreCase(argv[i].substring(0, 3)) &&
                    i < argv.length - 1) {
           i++;
-          if (argv[i].substring(0, 1).equalsIgnoreCase("g"))
+          if ("g".equalsIgnoreCase(argv[i].substring(0, 1)))
             outSubsamp = TJ.SAMP_GRAY;
-          else if (argv[i].equals("444"))
+          else if ("444".equals(argv[i]))
             outSubsamp = TJ.SAMP_444;
-          else if (argv[i].equals("422"))
+          else if ("422".equals(argv[i]))
             outSubsamp = TJ.SAMP_422;
-          else if (argv[i].equals("420"))
+          else if ("420".equals(argv[i]))
             outSubsamp = TJ.SAMP_420;
           else
             usage();
-        } else if (argv[i].substring(0, 2).equalsIgnoreCase("-q") &&
+        } else if ("-q".equalsIgnoreCase(argv[i].substring(0, 2)) &&
                    i < argv.length - 1) {
           outQual = Integer.parseInt(argv[++i]);
           if (outQual < 1 || outQual > 100)
             usage();
-        } else if (argv[i].substring(0, 2).equalsIgnoreCase("-g"))
+        } else if ("-g".equalsIgnoreCase(argv[i].substring(0, 2)))
           xform.options |= TJTransform.OPT_GRAY;
-        else if (argv[i].equalsIgnoreCase("-hflip"))
+        else if ("-hflip".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_HFLIP;
-        else if (argv[i].equalsIgnoreCase("-vflip"))
+        else if ("-vflip".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_VFLIP;
-        else if (argv[i].equalsIgnoreCase("-transpose"))
+        else if ("-transpose".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_TRANSPOSE;
-        else if (argv[i].equalsIgnoreCase("-transverse"))
+        else if ("-transverse".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_TRANSVERSE;
-        else if (argv[i].equalsIgnoreCase("-rot90"))
+        else if ("-rot90".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_ROT90;
-        else if (argv[i].equalsIgnoreCase("-rot180"))
+        else if ("-rot180".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_ROT180;
-        else if (argv[i].equalsIgnoreCase("-rot270"))
+        else if ("-rot270".equalsIgnoreCase(argv[i]))
           xform.op = TJTransform.OP_ROT270;
-        else if (argv[i].equalsIgnoreCase("-custom"))
+        else if ("-custom".equalsIgnoreCase(argv[i]))
           xform.cf = new TJExample();
         else if (argv[i].length() > 2 &&
-                 argv[i].substring(0, 2).equalsIgnoreCase("-c") &&
+                 "-c".equalsIgnoreCase(argv[i].substring(0, 2)) &&
                  i < argv.length - 1) {
           String[] cropArg = argv[++i].split("[x\\+]");
           if (cropArg.length != 4)
@@ -243,15 +243,15 @@ class TJExample implements TJCustomFilter {
               xform.height < 1)
             usage();
           xform.options |= TJTransform.OPT_CROP;
-        } else if (argv[i].substring(0, 2).equalsIgnoreCase("-d"))
+        } else if ("-d".equalsIgnoreCase(argv[i].substring(0, 2)))
           display = true;
-        else if (argv[i].equalsIgnoreCase("-fastupsample")) {
+        else if ("-fastupsample".equalsIgnoreCase(argv[i])) {
           System.out.println("Using fast upsampling code");
           flags |= TJ.FLAG_FASTUPSAMPLE;
-        } else if (argv[i].equalsIgnoreCase("-fastdct")) {
+        } else if ("-fastdct".equalsIgnoreCase(argv[i])) {
           System.out.println("Using fastest DCT/IDCT algorithm");
           flags |= TJ.FLAG_FASTDCT;
-        } else if (argv[i].equalsIgnoreCase("-accuratedct")) {
+        } else if ("-accuratedct".equalsIgnoreCase(argv[i])) {
           System.out.println("Using most accurate DCT/IDCT algorithm");
           flags |= TJ.FLAG_ACCURATEDCT;
         } else usage();
